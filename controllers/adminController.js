@@ -1,5 +1,6 @@
 const adminModel = require("../models/adminModel");
 const bcrypt = require('bcrypt');
+const fs = require('fs')
 
 const Home = async (req, res) => {
     const admin = await adminModel.findById(req.cookies.uid);
@@ -65,10 +66,15 @@ const Profile = async (req, res) => {
 };
 
 const UpdateProfile = async (req, res) => {
-    const updatedAdmin = {...req.body, avatar: req.file.path};
 
+    let updatedAdmin;
+
+    if(req.file){
+        fs.unlink(req.body.profile, () => console.log("Avatar is Updeting"));
+        updatedAdmin = {...req.body, avatar: req.file.path};
+    }else updatedAdmin = req.body;
+    
     await adminModel.findByIdAndUpdate(req.cookies.uid, updatedAdmin);
-
     res.redirect('profile');
 };
 

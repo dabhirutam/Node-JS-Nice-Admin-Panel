@@ -14,6 +14,10 @@ const adminSchema = mongoose.Schema({
     country: {type: String},
     address: {type: String},
     phone: {type: Number},
+    twitter: {type: String},
+    instagram : {type: String},
+    facebook : {type: String},
+    linkedin  : {type: String},
 });
 
 const adminModel = mongoose.model('admins', adminSchema);

@@ -31,14 +31,14 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="<%= admin.avatar %>" alt="Profile" class="rounded-circle">
+              <img src="<%= admin.avatar ? admin.avatar : '../uploads/admin_dummy_profile.webp' %>" alt="Profile" class="rounded-circle">
               <h2><%= admin.userName %></h2>
               <h3><%= admin.job %></h3>
               <div class="social-links mt-2">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a href="<%= admin.twitter %>" target="_blank" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="<%= admin.facebook %>" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="<%= admin.instagram %>" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="<%= admin.linkedin %>" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
           </div>
@@ -121,9 +121,11 @@
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="<%= admin.avatar %>" alt="Profile">
+                          <img id="img" src="<%= admin.avatar ? admin.avatar : '../uploads/admin_dummy_profile.webp' %>" alt="Profile">                        
                         <div class="pt-2">
-                            <input name="avatar" type="file" class="form-control" id="avatar">
+                            <label for="avatar" class="btn btn-primary text-white" onclick="return uploadImg()">Upload</label>
+                            <input name="avatar" type="file" id="avatar" style="display: none;">
+                            <input name="profile" type="text" id="profile" value="<%= admin.avatar %>" hidden>
                         </div>
                       </div>
                     </div>
@@ -187,28 +189,28 @@
                     <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
+                        <input name="twitter" type="text" class="form-control" id="Twitter" value="<%= admin.twitter %>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
+                        <input name="facebook" type="text" class="form-control" id="Facebook" value="<%= admin.facebook %>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
+                        <input name="instagram" type="text" class="form-control" id="Instagram" value="<%= admin.instagram %>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
+                        <input name="linkedin" type="text" class="form-control" id="Linkedin" value="<%= admin.linkedin %>">
                       </div>
                     </div>
 
