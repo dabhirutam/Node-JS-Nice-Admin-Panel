@@ -31,7 +31,7 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="<%= admin.avatar ? admin.avatar : '../uploads/admin_dummy_profile.webp' %>" alt="Profile" class="rounded-circle">
+              <img src="<%= admin.avatar ? admin.avatar : '../uploads/profileImgs/dummy-profile_img.jpg' %>" alt="Profile" class="rounded-circle">
               <h2><%= admin.userName %></h2>
               <h3><%= admin.job %></h3>
               <div class="social-links mt-2">
@@ -121,9 +121,9 @@
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                          <img id="img" src="<%= admin.avatar ? admin.avatar : '../uploads/admin_dummy_profile.webp' %>" alt="Profile">                        
+                          <img id="img" src="<%= admin.avatar ? admin.avatar : '../uploads/profileImgs/dummy-profile_img.jpg' %>" alt="Profile">                        
                         <div class="pt-2">
-                            <label for="avatar" class="btn btn-primary text-white" onclick="return uploadImg()">Upload</label>
+                            <label for="avatar" class="btn btn-primary text-white">Upload</label>
                             <input name="avatar" type="file" id="avatar" style="display: none;">
                             <input name="profile" type="text" id="profile" value="<%= admin.avatar %>" hidden>
                         </div>
@@ -265,33 +265,34 @@
 
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
-                  <form>
+                  <form method="post" action="/changePassword">
 
                     <div class="row mb-3">
                       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="password" type="password" class="form-control" id="currentPassword">
+                        <input name="oldPassword" type="password" class="form-control" id="currentPassword">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="newpassword" type="password" class="form-control" id="newPassword">
+                        <input name="newPassword" type="password" class="form-control" id="newPassword">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                        <input name="renewPassword" type="password" class="form-control" id="renewPassword">
                       </div>
                     </div>
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Change Password</button>
                     </div>
-                  </form><!-- End Change Password Form -->
+                  </form>
+                  <!-- End Change Password Form -->
 
                 </div>
 

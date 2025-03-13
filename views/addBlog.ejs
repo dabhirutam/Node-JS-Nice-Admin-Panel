@@ -1,0 +1,54 @@
+<!-- ======= HTML Head ======= -->
+<%- include('components/htmlHead') %>
+
+<body>
+<!-- ======= Header ======= -->
+<%- include('components/header') %>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<%- include('components/sidebar') %>
+<!-- End Sidebar-->
+
+<!-- ======= Main ======= -->
+<main id="main" class="main">
+    <section class="section">
+        <div class="row justify-content-center py-5">
+          <div class="col-lg-8">
+              <!-- Floating Labels Form -->
+              <form class="row g-3" action="/addBlog" method="post" enctype="multipart/form-data">
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="floatingName" name="title" placeholder="title">
+                      <label for="floatingName">Title</label>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                      <input class="form-control" name="blogImg" type="file" id="formFile">
+                  </div>
+                  <!-- TinyMCE Editor -->
+                    <textarea class="tinymce-editor" name="blog">
+                        <p>Hello World!</p>
+                        <p>This is TinyMCE <strong>full</strong> editor</p>
+                    </textarea>
+                  <!-- End TinyMCE Editor -->
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+              </form>
+              <!-- End floating Labels Form -->
+          </div>
+        </div>
+    </section>
+</main>
+<!-- End Main -->
+
+<!-- ======= Footer ======= -->
+<%- include('components/footer') %>
+<!-- End Footer -->
+ 
+<!-- Vendor JS Files -->
+<%- include('components/scripts') %>
+</body>
+
+</html>

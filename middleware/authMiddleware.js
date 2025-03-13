@@ -1,9 +1,15 @@
+
 const Auth = (req, res, next) => {
-    req.cookies.uid ? next() : res.redirect('/login');
+    if(req.isAuthenticated() || req.cookies.uid){
+        next(null)
+    }else res.redirect('/login');
 };
 
-const LogInMiddleware = (req, res, next) => {
-    req.cookies.uid ? res.redirect('/') : next();
+const LogIn = async (req, res, next) => {
+    if(req.cookies.uid || req.isAuthenticated()){
+        res.redirect('/')
+    }else next();
 };
 
-module.exports = { Auth, LogInMiddleware }
+
+module.exports = { Auth, LogIn }

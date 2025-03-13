@@ -2,6 +2,14 @@
 <%- include('components/htmlHead') %>
 
 <body>
+
+<!-- Alert msg-->
+ <% if(msg){ %>
+    <div class="alert bg-white position-fixed start-50 translate-middle shadow border" style="min-width: 150px;z-index: 1100;" role="alert">
+        <%= msg %>
+    </div>
+ <% } %>
+
 <!-- ======= Header ======= -->
 <%- include('components/header') %>
 <!-- End Header -->
@@ -684,6 +692,12 @@
  
 <!-- Vendor JS Files -->
 <%- include('components/scripts') %>
+
+<script>
+    setTimeout(() => {
+        document.querySelector('.alert').style.display="none"
+    }, 3000)
+</script>
 </body>
 
 </html>

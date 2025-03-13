@@ -1,0 +1,59 @@
+<!-- ======= HTML Head ======= -->
+<%- include('components/htmlHead') %>
+
+<body>
+<!-- ======= Header ======= -->
+<%- include('components/header') %>
+<!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<%- include('components/sidebar') %>
+<!-- End Sidebar-->
+
+<!-- ======= Main ======= -->
+<main id="main" class="main">
+    <section class="py-5 bg-light">
+        <div class="container">
+          <h2 class="text-center mb-5">Latest Blog Posts</h2>
+          <div class="row">
+            <% adminBlog.forEach( blog => { %>
+                <div class="col-5">
+                    <div class="card p-2">
+                        <img src="<%= blog.blogImg %>" style="width: 100%;aspect-ratio: 3/2;" class="card-img-top p-2 object-fit-fill border" alt="...">
+                        <div class="card-body mt-3">
+                          <div class="d-flex align-items-center m-0">
+                              <img class="rounded-circle border-1 border-black object-fit-cover" style="width: 55px;aspect-ratio: 1/1;" src="<%= blog.admin.avatar %>" alt="">
+                              <div class="ms-2">
+                                  <h6 class="m-0 fw-bold"><%= blog.admin.userName  %></h6>
+                                  <p class="m-0" style="font-size: 14.5px;"><%= new Date(blog.createdAt).toLocaleString('en-US', {
+                                    weekday: 'long', year: 'numeric', month: 'long',
+                                    day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true,
+                                  }) %></p>
+                              </div>
+                              <span class="ms-auto text-primary fw-medium time-ago" data-time="<%= blog.createdAt %>">
+															  <%= new Date(blog.createdAt).toLocaleString('en-US') %>
+														  </span>
+                          </div>
+                          <h5 class="card-title"><%= blog.title %></h5>
+                          <%- blog.blog %>
+                        </div> 
+                    </div>
+
+                </div>
+            <% }) %>
+          </div>
+        </div>
+      </section>      
+</main>
+<!-- End Main -->
+
+<!-- ======= Footer ======= -->
+<%- include('components/footer') %>
+<!-- End Footer -->
+ 
+<!-- Vendor JS Files -->
+<%- include('components/scripts') %>
+
+</body>
+
+</html>
